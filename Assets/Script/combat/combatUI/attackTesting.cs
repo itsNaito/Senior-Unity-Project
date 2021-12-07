@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class enemyTest : MonoBehaviour
+public class attackTesting : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,9 +14,5 @@ public class enemyTest : MonoBehaviour
     void Update()
     {
         
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        SceneManager.LoadScene(sceneName: "combatScene");
     }
 }

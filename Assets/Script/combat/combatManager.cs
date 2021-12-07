@@ -1,31 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class combatManager : MonoBehaviour
 {
-    int starting;
-    //public GameObject player;
-    //public GameObject enemy;
+    public GameObject player;
+    public GameObject zombie;
+    public Canvas canvas;
+    public Text text; 
     // Start is called before the first frame update
     void Start()
     {
-        System.Random rand = new System.Random();
-        starting = rand.Next(0, 2);
-        Debug.Log(starting);
-        if(starting == 0)
-        {
-            Debug.Log("Player First");
-        }
-        if(starting == 1)
-        {
-            Debug.Log("Enemy First");
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        text.text = "The player goes first!";
+        player.GetComponent<playerTurn>().myTurn = true;
     }
 }
