@@ -7,10 +7,6 @@ public class zombieTurn : MonoBehaviour
     zombie zombie = new zombie(10,5);
     private bool dead;
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
     public void dmgTaken(int dmg)
     {
         zombie.health -= dmg;
@@ -19,5 +15,9 @@ public class zombieTurn : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public int attack()
+    {
+        return zombie.dmg;
     }
 }

@@ -9,7 +9,8 @@ public class combatManager : MonoBehaviour
     public GameObject zombie;
     public GameObject playerHud;
     public bool playerTurn;
-    public Text text; 
+    public Text text;
+    private int zomDmg;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,16 @@ public class combatManager : MonoBehaviour
         if(playerTurn)
         {
             playerHud.SetActive(true);
+            
         }
+        else
+        {
+            playerHud.SetActive(false);
+        }
+    }
+    public void zombieAttack()
+    {
+        zomDmg = zombie.GetComponent<zombieTurn>().attack();
+        gameObject.GetComponent<combatInteraction>().playerDmgTaken(zomDmg);
     }
 }

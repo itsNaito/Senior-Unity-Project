@@ -20,5 +20,22 @@ public class combatInteraction : MonoBehaviour
         console = gameObject.GetComponent<combatManager>().text;
         zombie.GetComponent<zombieTurn>().dmgTaken(playerStats.dmg);
         console.text = "You dealt "+ playerStats.dmg + " damage!!";
+        gameObject.GetComponent<combatManager>().playerTurn = false;
+        gameObject.GetComponent<combatManager>().zombieAttack();
+    }
+    public void playerDmgTaken(int dmg)
+    {
+        playerStats.health -= dmg;
+        playerStats.isDead();
+        console.text = "The zombie has dealt " + dmg + " damage!";
+        if(playerStats.health > 0)
+        {
+            gameObject.GetComponent<combatManager>().playerTurn = true;
+            
+        }
+        else
+        {
+            Destroy(player);
+        }
     }
 }
