@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-class playerBattle
+
+public class battleStats
 {
     int health;
     int dmg;
-    public playerBattle(int health, int dmg)
+    public battleStats(int health, int dmg)
     {
         this.health = health;
         this.dmg = dmg;
@@ -16,6 +17,9 @@ class playerBattle
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 }

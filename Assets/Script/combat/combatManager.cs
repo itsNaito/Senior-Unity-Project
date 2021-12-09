@@ -7,12 +7,24 @@ public class combatManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject zombie;
-    public Canvas canvas;
+    public GameObject playerHud;
+    public bool playerTurn;
     public Text text; 
     // Start is called before the first frame update
     void Start()
     {
         text.text = "The player goes first!";
-        player.GetComponent<playerTurn>().myTurn = true;
+        playerTurn = true;
+    }
+    void Update()
+    {
+        activeUI();
+    }
+    void activeUI()
+    {
+        if(playerTurn)
+        {
+            playerHud.SetActive(true);
+        }
     }
 }
