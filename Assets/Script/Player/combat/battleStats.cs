@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class battleStats
 {
-    int health;
-    int dmg;
+    public int health;
+    public int dmg;
     public battleStats(int health, int dmg)
     {
         this.health = health;

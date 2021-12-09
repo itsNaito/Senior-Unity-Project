@@ -4,8 +4,8 @@ using UnityEngine;
 
 class zombie
 {
-    int health;
-    int dmg;
+    public int health;
+    public int dmg;
 
     public zombie(int health, int dmg)
     {
@@ -18,6 +18,9 @@ class zombie
         {
             return true;
         }
-        return false;
+        else
+        {
+           return false; 
+        }
     }
 }

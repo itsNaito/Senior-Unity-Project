@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 29914878}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1085201208}
+        m_TargetAssemblyTypeName: combatInteraction, Assembly-CSharp
+        m_MethodName: dealtDmg
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &29914878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,9 +405,8 @@ GameObject:
   m_Component:
   - component: {fileID: 523114093}
   - component: {fileID: 523114092}
-  - component: {fileID: 523114094}
   m_Layer: 0
-  m_Name: 4thCharacterDesign (1)
+  m_Name: 4thCharacterDesign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,18 +477,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &523114094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523114091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac235da43eebfb4dad1c1ca4a07de07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &699964048
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,13 +642,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: a17b4427813d3ed4b9ee2feb3e2ac4c0, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1085201208}
+        m_TargetAssemblyTypeName: interaction, Assembly-CSharp
+        m_MethodName: attacking
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -839,6 +838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 739994994}
   hit: {fileID: 325698584}
+  player: {fileID: 523114091}
+  zombie: {fileID: 1712546648}
 --- !u!1 &1182511944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,8 +1083,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1712546650}
   - component: {fileID: 1712546649}
+  - component: {fileID: 1712546651}
   m_Layer: 0
-  m_Name: 1stZombieDesign (1)
+  m_Name: 1stZombieDesign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,6 +1156,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1712546651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712546648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8871a0980d5a8a4f914fde57a8cf94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1732768756
 GameObject:
   m_ObjectHideFlags: 0
