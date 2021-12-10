@@ -9,6 +9,7 @@ public class combatInteraction : MonoBehaviour
     public GameObject player;
     public GameObject zombie;
     private Text console;
+    private int zombieHealth;
     private battleStats playerStats = new battleStats(10,5);
     public void attacking()
     {
@@ -18,10 +19,13 @@ public class combatInteraction : MonoBehaviour
     public void dealtDmg()
     {
         console = gameObject.GetComponent<combatManager>().text;
-        zombie.GetComponent<zombieTurn>().dmgTaken(playerStats.dmg);
+        zombieHealth = zombie.GetComponent<zombieTurn>().dmgTaken(playerStats.dmg);
         console.text = "You dealt "+ playerStats.dmg + " damage!!";
         gameObject.GetComponent<combatManager>().playerTurn = false;
-        gameObject.GetComponent<combatManager>().zombieAttack();
+        if(zombieHealth > 0)
+        {
+            StartCoroutine(combatDelay());
+        }
     }
     public void playerDmgTaken(int dmg)
     {
@@ -31,11 +35,17 @@ public class combatInteraction : MonoBehaviour
         if(playerStats.health > 0)
         {
             gameObject.GetComponent<combatManager>().playerTurn = true;
-            
+            attack.SetActive(true);
+            hit.SetActive(true);
         }
         else
         {
             Destroy(player);
         }
+    }
+    IEnumerator combatDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.GetComponent<combatManager>().zombieAttack();
     }
 }

@@ -7,7 +7,8 @@ public class combatManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject zombie;
-    public GameObject playerHud;
+    public GameObject Menus;
+    public GameObject options;
     public bool playerTurn;
     public Text text;
     private int zomDmg;
@@ -25,12 +26,17 @@ public class combatManager : MonoBehaviour
     {
         if(playerTurn)
         {
-            playerHud.SetActive(true);
-            
+            Menus.SetActive(true);
+            options.SetActive(true);
+            //need to set it so the attack button appears everytime the player turn is reset
+            //also need to add delay to the actions from the zombie just a second or two to slow down
+            //the rate of action in combat
+            //need to be able to access player weapon data to grab the damage of the weapon the player is using
         }
         else
         {
-            playerHud.SetActive(false);
+            Menus.SetActive(false);
+            options.SetActive(false);
         }
     }
     public void zombieAttack()
