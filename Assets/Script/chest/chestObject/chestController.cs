@@ -6,6 +6,7 @@ public class chestController : MonoBehaviour
 {
     private drop drop = new drop();//instance of the drop object
     public string weaponName;//weaponName variable to store the name of the item pulled
+    public int weaponDmg;
     void Start()//Runs at the start of the game 
     {
         chest();//calls the chest function
@@ -22,6 +23,7 @@ public class chestController : MonoBehaviour
         {
             drop.randomValue();//creates a random value used for the dropped function
             weaponName = drop.dropped("firearms.json",4);//runs the dropped function giving the file name and list size
+            weaponDmg = drop.dmgReturn(weaponName);
         }
         
         if(gameObject.tag == "melee")//checks the tag of the chest

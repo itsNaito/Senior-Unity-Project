@@ -41,7 +41,7 @@ public class battleStates : MonoBehaviour
     }
     IEnumerator playerAttack()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         enemyIsDead = enemyStats.takeDamage(playerStats.damage);
         text.text = "Your attack dealt " + playerStats.damage + " to the zombie";
         if(enemyIsDead)
@@ -58,9 +58,9 @@ public class battleStates : MonoBehaviour
     }
     IEnumerator enemyAttack()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         text.text = "The zombie is attacking";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         playerIsDead = playerStats.takeDamage(enemyStats.damage);
         text.text = "You took " + enemyStats.damage + " from the zombie";
         if(playerIsDead)
@@ -72,6 +72,7 @@ public class battleStates : MonoBehaviour
         else
         {
             state = battleState.playerTurn;
+            text.text = "Player's turn";
         }
     }
     void endBattle()
@@ -87,7 +88,7 @@ public class battleStates : MonoBehaviour
     }
     void playerTurn()
     {
-        text.text = "Player Turn. Choose an action";
+        text.text = "Player's Turn. Choose an action";
     }
     public void onAttackButton()
     {

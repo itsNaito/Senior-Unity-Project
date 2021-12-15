@@ -11,13 +11,16 @@ public class drop//manages the item drops
     public string file;
     public List<int> rates;
     public List<string> weaponName;
+    public List<int> weaponDmg;
+    //Tuple<drop rate, weapon name, damage value>
 
     //constructor
     public drop()
     {
         random = 0;
         rates = new List<int>();
-        weaponName = new List<string>(); 
+        weaponName = new List<string>();
+        weaponDmg = new List<int>();
     }
     public void randomValue()//generates a random value
     {
@@ -30,6 +33,7 @@ public class drop//manages the item drops
         {
             rates.Add(JsonUtility.FromJson<weaponPool>(file).pool[i].weight);//adds each item's weight
             weaponName.Add(JsonUtility.FromJson<weaponPool>(file).pool[i].weaponName);//adds each item's name
+            weaponDmg.Add(JsonUtility.FromJson<weaponPool>(file).pool[i].damageValue);
         }
         for(int j = 0; j < jsonSize; j++)//second for loop that runs the random number through each item's weight until boolean operation is true
         {
@@ -44,6 +48,17 @@ public class drop//manages the item drops
             //Doing this reduces the number before have the loop check another item in the list
         }
         return null;//returns null just incase something breaks
+    }
+    public int dmgReturn(string pulledWeapon)
+    {
+        for(int i = 0; i < weaponName.Count; i++)
+        {
+            if(pulledWeapon == weaponName[i])
+            {
+                return weaponDmg[i];
+            }
+        }
+        return 0;
     }
 }
 

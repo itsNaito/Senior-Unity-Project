@@ -18,7 +18,7 @@ public class detector : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))//waits for an input press on the E key which means that the player is interacting with the chest
             {
-                player.GetComponent<playerInventory>().insertInventory(gameObject.GetComponent<chestController>().weaponName);//gets the player inventory component and sends the weaponName of the item pulled 
+                player.GetComponent<playerInventory>().insertInventory(gameObject.GetComponent<chestController>().weaponName,gameObject.GetComponent<chestController>().weaponDmg);//gets the player inventory component and sends the weaponName of the item pulled 
                 Destroy(gameObject);//destroys the chest object
             }
         }
