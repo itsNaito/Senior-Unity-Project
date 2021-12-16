@@ -60,7 +60,7 @@ public class movement : MonoBehaviour
             {
                 StartCoroutine(delay("W"));
                 Vector3Int gridPos = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, 0));//gets the grid position from the world and converts it to the tilemap grid position
-                if (gridPos.x < 7)//checks to see if the x value of the player is less than the highest value the player can go up
+                if(gridPos.x < 7)//checks to see if the x value of the player is less than the highest value the player can go up
                 {
                     transform.position = new Vector3(back.position.x + 0.5f, back.position.y, 0);//moves the player position
                     forward.position = new Vector3(savePosF.x + 0.5f, savePosF.y + 0.25f, 0);//moves the front movePoint

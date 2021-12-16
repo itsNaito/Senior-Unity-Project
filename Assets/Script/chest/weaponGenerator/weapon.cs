@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+[System.Serializable]
 public class weapon//weapon class for creation of every weapon instance
 {
     public string weaponName;//name of the weapon

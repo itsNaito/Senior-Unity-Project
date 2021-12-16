@@ -43,7 +43,8 @@ public class battleStates : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         enemyIsDead = enemyStats.takeDamage(playerStats.damage);
-        text.text = "Your attack dealt " + playerStats.damage + " to the zombie";
+        text.text = "You used a "+ playerStats.attack + " that dealt " + playerStats.damage + " to the zombie";
+        yield return new WaitForSeconds(1.5f);
         if(enemyIsDead)
         {
             state = battleState.won;
@@ -62,7 +63,8 @@ public class battleStates : MonoBehaviour
         text.text = "The zombie is attacking";
         yield return new WaitForSeconds(1.5f);
         playerIsDead = playerStats.takeDamage(enemyStats.damage);
-        text.text = "You took " + enemyStats.damage + " from the zombie";
+        text.text = "The zombie used " + enemyStats.attack + " that dealt " + enemyStats.damage + " to you";
+        yield return new WaitForSeconds(1.5f);
         if(playerIsDead)
         {
             state = battleState.lost;
