@@ -8,16 +8,16 @@ Currently only the tutorial button has an event that takes the player to the tut
 */
 public class buttonController : MonoBehaviour
 {
-    public void tutorial()//tutorial function attached to a button
-    {
-        SceneManager.LoadScene("tutorial");//loads the tutorial scene
-    }
     public void play()//play function that is attached to button no actions yet
     {
-
+        SceneManager.LoadScene("tutorial");
     }
     public void settings()//settings function that is attached to button no actions yet
     {
 
+    }
+    public void quit()
+    {
+        Application.Quit();
     }
 }

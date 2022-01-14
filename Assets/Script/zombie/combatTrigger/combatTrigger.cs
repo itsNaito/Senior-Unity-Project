@@ -8,10 +8,12 @@ This is the final part of the tutorial that needs to be built then the main game
 */
 public class combatTrigger : MonoBehaviour
 {
+    public GameObject player;
     void OnTriggerEnter2D(Collider2D other)//checks for the triggerEnter event
     {
         if(other.gameObject.CompareTag("Player"))//checks to see if the object is the Player
         {
+            saveSystem.SavePlayer(player.GetComponent<movement>());
             SceneManager.LoadScene("Combat");//loads the combat scene
         }
     }

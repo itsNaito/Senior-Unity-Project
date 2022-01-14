@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum battleState {start, playerTurn, enemyTurn,won,lost};
 public class battleStates : MonoBehaviour
@@ -82,6 +83,7 @@ public class battleStates : MonoBehaviour
         if(state == battleState.won)
         {
             text.text = "You have won the battle!!";
+            SceneManager.LoadScene("Tutorial");
         }
         else if(state == battleState.lost)
         {

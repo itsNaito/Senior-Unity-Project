@@ -16,6 +16,12 @@ public class movement : MonoBehaviour
 
     public List<GameObject> arrows = new List<GameObject>();
     // Update is called once per frame
+
+    void Start()
+    {
+        //initSave();
+        load();
+    }
     void Update()
     {
         gridMovement();//the movement function call that runs every frame
@@ -107,5 +113,22 @@ public class movement : MonoBehaviour
         arrows[2].GetComponent<Renderer>().enabled = false;
         arrows[3].GetComponent<Renderer>().enabled = false;
         gridMovement();
+    }
+    public void initSave()
+    {
+        saveSystem.SavePlayer(this);
+    }
+    public void load()
+    {
+        try
+        {
+            save data = saveSystem.loadPlayer();
+            Vector3 pos;
+            pos.x = data.playerPosititon[0];
+            pos.y = data.playerPosititon[1];
+            pos.z = data.playerPosititon[2];
+            Debug.Log(pos);
+            transform.position = pos;
+        }catch{}
     }
 }
