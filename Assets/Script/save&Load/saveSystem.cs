@@ -1,36 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-public static class saveSystem
+using UnityEngine.SceneManagement;
+using System.Linq;
+public class saveSystem : MonoBehaviour 
 {
-    //save the player data inside of player.sav file that contains binary
-    public static void SavePlayer(movement player)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.sav";
-        FileStream stream = new FileStream(path, FileMode.Create);
+    //move the tag system to the saveupdate script which will send it to the saveSystem script everytime a scene is loaded
+    //when zombie loses in combat will get transferred to a dead objects scripts that will get destroyed everytime the player is loading that scene
+    //when the player moves to the next level it will empty all list 
+    private static saveSystem saveInstance;
+    public GameObject player;
+    public Transform playerPos;
+    public List<GameObject> zombies = new List<GameObject>();
+    public List<GameObject> chests = new List<GameObject>();
 
-        save data = new save(player);
-
-        formatter.Serialize(stream, data);
-        stream.Close();
-    }
-    //loads the file with the player data from player.sav file that contains binary
-    public static save loadPlayer()
+    private string combatEnd;
+    void Awake()
     {
-        string path = Application.persistentDataPath + "/player.sav";
-        if(File.Exists(path))
+        if(saveInstance == null)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path,FileMode.Open);
-            save data = formatter.Deserialize(stream) as save;
-            stream.Close();
-            return data;
+            DontDestroyOnLoad(this); 
+            saveInstance = this; 
         }
         else
         {
-            Debug.LogError("Save file not found");
-            return null;
+            Destroy(gameObject);
+        }
+    }
+    void LateUpdate()
+    {
+        if(SceneManager.GetActiveScene().name != "Combat")
+        {
+            playerPos = player.GetComponent<Transform>();
+        }
+    }
+    public void updateObjects()
+    {
+        player = GameObject.FindWithTag("Player");
+        zombies = GameObject.FindGameObjectsWithTag("zombie").ToList();
+        chests = GameObject.FindGameObjectsWithTag("firearms").ToList();
+        DontDestroyOnLoad(player);
+        for(int i = 0; i < zombies.Count; i++)
+        {
+            DontDestroyOnLoad(zombies[i]);
+        }
+        for(int j = 0; j < chests.Count; j++)
+        {
+            DontDestroyOnLoad(chests[j]);
         }
     }
 }

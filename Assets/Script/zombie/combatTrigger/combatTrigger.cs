@@ -13,7 +13,6 @@ public class combatTrigger : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))//checks to see if the object is the Player
         {
-            saveSystem.SavePlayer(player.GetComponent<movement>());
             SceneManager.LoadScene("Combat");//loads the combat scene
         }
     }
