@@ -508,6 +508,50 @@ MonoBehaviour:
   dialogue: {fileID: 780563126}
   dialogueOutput: Welcome to the game. To move you can press W, A, S, D  or  the
     arrow keys. To close this textbox, press the E key and proceed to the next checkpoint.
+--- !u!1 &443923669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443923670}
+  - component: {fileID: 443923671}
+  m_Layer: 0
+  m_Name: masterZombie
+  m_TagString: zombie
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443923670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443923669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.6483607, y: -2.9042432, z: -0.13265349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1182927277}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &443923671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443923669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b2384e01722be43b393b580f2463e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &448684455
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +812,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465480741}
   m_CullTransparentMesh: 1
+--- !u!4 &589531756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6721711341916238587, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
+  m_PrefabInstance: {fileID: 6721711342658613596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &629153955
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +881,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654405984
 GameObject:
@@ -1767,7 +1816,7 @@ GameObject:
   - component: {fileID: 1091666723}
   m_Layer: 0
   m_Name: saveSystem
-  m_TagString: Untagged
+  m_TagString: saveSys
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1784,10 +1833,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baa9fd9af432564b9cf9682a1e03423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 448684455}
+  player: {fileID: 0}
+  zombie: {fileID: 0}
+  chests: {fileID: 0}
+  zombies: {fileID: 0}
   playerPos: {fileID: 0}
-  zombies: []
-  chests: []
 --- !u!4 &1091666724
 Transform:
   m_ObjectHideFlags: 0
@@ -1800,7 +1850,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1137877584
 GameObject:
@@ -1992,16 +2042,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182927275}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -2.25, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.3516393, y: 0.65424323, z: 0.13265349}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 41936167}
   - {fileID: 1691360578}
   - {fileID: 2136171342}
   - {fileID: 654405985}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 443923670}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1182927278
 CircleCollider2D:
@@ -2620,7 +2670,7 @@ GameObject:
   - component: {fileID: 1661923415}
   m_Layer: 0
   m_Name: masterChest
-  m_TagString: Untagged
+  m_TagString: chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2639,8 +2689,9 @@ Transform:
   - {fileID: 1500853729}
   - {fileID: 1694104644}
   - {fileID: 1995910764}
+  - {fileID: 589531756}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691360577
 GameObject:
@@ -2843,7 +2894,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1937932960
 GameObject:
@@ -6157,7 +6208,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1661923415}
     m_Modifications:
     - target: {fileID: 6721711341916238580, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
       propertyPath: player
@@ -6169,19 +6220,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6721711341916238587, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6721711341916238587, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 3.3583794
       objectReference: {fileID: 0}
     - target: {fileID: 6721711341916238587, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.88
+      value: 0.17682636
       objectReference: {fileID: 0}
     - target: {fileID: 6721711341916238587, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.79271054
       objectReference: {fileID: 0}
     - target: {fileID: 6721711341916238587, guid: 488937de5e6e17f4b953eeb15dc6fb8a, type: 3}
       propertyPath: m_LocalRotation.w

@@ -11,6 +11,7 @@ public class battleStates : MonoBehaviour
     public battleState state;
     public GameObject player;
     public GameObject enemy;
+    public GameObject saveSystem;
     public Transform playerSpawn;
     public Transform enemySpawn;
     characterStats playerStats;
@@ -33,6 +34,7 @@ public class battleStates : MonoBehaviour
         zombieInit = Instantiate(enemy,enemySpawn);
         zombieInit.SetActive(true);
         enemyStats = zombieInit.GetComponent<characterStats>();
+        saveSystem = GameObject.FindGameObjectWithTag("saveSys");
         text.text = "A " + enemyStats.unitName + " approaches....";
 
         yield return new WaitForSeconds(2f);
@@ -83,12 +85,28 @@ public class battleStates : MonoBehaviour
         if(state == battleState.won)
         {
             text.text = "You have won the battle!!";
-            SceneManager.LoadScene("Tutorial");
+            StartCoroutine(returnScene());
         }
         else if(state == battleState.lost)
         {
             text.text = "You have lost the battle!!";
+            StartCoroutine(returnScene());
         }
+    }
+    IEnumerator returnScene()
+    {
+        yield return new WaitForSeconds(1f);
+        GameObject.FindGameObjectsWithTag("saveSys");
+        if(state == battleState.won)
+        {
+            saveSystem.GetComponent<saveSystem>().battleWinner(battleState.won);
+        }
+        if(state == battleState.lost)
+        {
+            saveSystem.GetComponent<saveSystem>().battleWinner(battleState.lost);
+        }
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Tutorial");
     }
     void playerTurn()
     {

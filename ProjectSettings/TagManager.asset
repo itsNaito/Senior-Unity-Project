@@ -9,6 +9,8 @@ TagManager:
   - melee
   - goku
   - zombie
+  - chest
+  - saveSys
   layers:
   - Default
   - TransparentFX

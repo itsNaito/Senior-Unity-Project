@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 public class saveSystem : MonoBehaviour 
 {
-    //move the tag system to the saveupdate script which will send it to the saveSystem script everytime a scene is loaded
-    //when zombie loses in combat will get transferred to a dead objects scripts that will get destroyed everytime the player is loading that scene
-    //when the player moves to the next level it will empty all list 
     private static saveSystem saveInstance;
     public GameObject player;
+
+    public GameObject zombie;
+
+    public GameObject chests;
+
+    public GameObject zombies;
     public Transform playerPos;
-    public List<GameObject> zombies = new List<GameObject>();
-    public List<GameObject> chests = new List<GameObject>();
+
+    public List<GameObject> checkpoints = new List<GameObject>();
 
     private string combatEnd;
     void Awake()
@@ -37,16 +40,23 @@ public class saveSystem : MonoBehaviour
     public void updateObjects()
     {
         player = GameObject.FindWithTag("Player");
-        zombies = GameObject.FindGameObjectsWithTag("zombie").ToList();
-        chests = GameObject.FindGameObjectsWithTag("firearms").ToList();
+        zombies = GameObject.FindGameObjectWithTag("zombie");
+        chests = GameObject.FindGameObjectWithTag("chest");
         DontDestroyOnLoad(player);
-        for(int i = 0; i < zombies.Count; i++)
+        DontDestroyOnLoad(zombies);
+        DontDestroyOnLoad(chests);
+    }
+    public void battleWinner(battleState battleState)
+    {
+        if(battleState == battleState.won)
         {
-            DontDestroyOnLoad(zombies[i]);
+            Destroy(zombie);
+            Debug.Log("Worked");
         }
-        for(int j = 0; j < chests.Count; j++)
+        if(battleState == battleState.lost)
         {
-            DontDestroyOnLoad(chests[j]);
+            Debug.Log("Game Over");
+            Debug.Log("Lost worked");
         }
     }
 }

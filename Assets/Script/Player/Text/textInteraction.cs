@@ -10,7 +10,7 @@ public class textInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while(SceneManager.GetActiveScene().name == "Tutorial")
+        if(SceneManager.GetActiveScene().name == "Tutorial")
         {
             Canvas render = canvas.GetComponent<Canvas>();//gets the canvas component off the canvas
             if (render.enabled == true)//checks to see if the canvas gameObject is being rendered

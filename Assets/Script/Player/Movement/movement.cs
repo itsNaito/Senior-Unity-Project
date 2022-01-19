@@ -10,11 +10,24 @@ The script has become cluttered so steps are being taken to adjust it
 public class movement : MonoBehaviour
 {
     //set of variable used for the movement
+    private static movement movementInstance;
     public Transform forward;
     public Transform back;
     public Tilemap tilemap;
 
     public List<GameObject> arrows = new List<GameObject>();
+    void Awake()
+    {
+        if(movementInstance == null)
+        {
+            DontDestroyOnLoad(this); 
+            movementInstance = this; 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
