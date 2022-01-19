@@ -11,6 +11,7 @@ TagManager:
   - zombie
   - chest
   - saveSys
+  - checkpoint
   layers:
   - Default
   - TransparentFX

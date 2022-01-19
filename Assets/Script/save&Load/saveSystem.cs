@@ -15,7 +15,7 @@ public class saveSystem : MonoBehaviour
     public GameObject zombies;
     public Transform playerPos;
 
-    public List<GameObject> checkpoints = new List<GameObject>();
+    public GameObject checkpoints;
 
     private string combatEnd;
     void Awake()
@@ -42,9 +42,11 @@ public class saveSystem : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         zombies = GameObject.FindGameObjectWithTag("zombie");
         chests = GameObject.FindGameObjectWithTag("chest");
+        checkpoints = GameObject.FindGameObjectWithTag("checkpoint");
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(zombies);
         DontDestroyOnLoad(chests);
+        DontDestroyOnLoad(checkpoints);
     }
     public void battleWinner(battleState battleState)
     {

@@ -517,7 +517,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443923670}
-  - component: {fileID: 443923671}
   m_Layer: 0
   m_Name: masterZombie
   m_TagString: zombie
@@ -540,18 +539,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &443923671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443923669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b2384e01722be43b393b580f2463e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &448684455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,7 +1454,7 @@ GameObject:
   - component: {fileID: 797424492}
   m_Layer: 0
   m_Name: masterCheckpoint
-  m_TagString: Untagged
+  m_TagString: checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1838,6 +1825,7 @@ MonoBehaviour:
   chests: {fileID: 0}
   zombies: {fileID: 0}
   playerPos: {fileID: 0}
+  checkpoints: {fileID: 0}
 --- !u!4 &1091666724
 Transform:
   m_ObjectHideFlags: 0
@@ -1978,7 +1966,7 @@ GameObject:
   - component: {fileID: 1182927276}
   - component: {fileID: 1182927278}
   m_Layer: 0
-  m_Name: 'zombie '
+  m_Name: zombie
   m_TagString: zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2082,6 +2070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 448684455}
+  saveSys: {fileID: 1091666722}
 --- !u!114 &1182927280
 MonoBehaviour:
   m_ObjectHideFlags: 0
