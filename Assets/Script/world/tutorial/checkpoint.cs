@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class checkpoint : MonoBehaviour
 {
     //set of variables used
-    public Transform player;
     public Canvas canvas;
     public Text dialogue;
     public string dialogueOutput;
@@ -19,15 +18,15 @@ public class checkpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.position == transform.position && !Input.GetKeyDown(KeyCode.E))//checks if the player is standing on the same tile as the checkpoint flag
+        
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
         {
             Canvas render = canvas.GetComponent<Canvas>();//gets the canvas component off the canvas
             render.enabled = true;//sets the renderer to true
             dialogue.text = dialogueOutput;//outs the dialogue for the text. The dialogue is written publicly for easy changes
-        }
-        if(player.position == transform.position && Input.GetKeyDown(KeyCode.E))//checks if the player is still on the flag and has pressed E
-        {
-            gameObject.SetActive(false);//turns the flag gameObject off
         }
     }
 }
