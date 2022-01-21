@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 /*Currently not happy with the organization of the script
 Plans to rewrite a large code is in the works, but might not happen for a bit
 The script has become cluttered so steps are being taken to adjust it
@@ -13,8 +13,7 @@ public class movement : MonoBehaviour
     private static movement movementInstance;
     public Transform forward;
     public Transform back;
-    public Tilemap tilemap;
-
+    public GameObject map;
     public List<GameObject> arrows = new List<GameObject>();
     void Awake()
     {
@@ -38,7 +37,8 @@ public class movement : MonoBehaviour
         textInteraction interaction = gameObject.GetComponent<textInteraction>();//grabs the textInteraction script off the player gameObject
         Vector3 savePosF = new Vector3(forward.position.x, forward.position.y, 0);//stores the position of the front movePoint
         Vector3 savePosb = new Vector3(back.position.x, back.position.y, 0);//stores the position of the back movePoint
-
+        map = GameObject.Find("map");
+        Tilemap tilemap = map.GetComponent<Tilemap>();
         if (interaction.noInput == false)//checks to see that dialogue isn't active
         {
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))//checks for input from D or right arrow
@@ -59,7 +59,7 @@ public class movement : MonoBehaviour
             {
                 StartCoroutine(delay("S"));
                 Vector3Int gridPos = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, 0));//gets the grid position from the world and converts it to the tilemap grid position
-                if (gridPos.x > -3)//checks to see if the x value of the player is greater than the fartherest value the player can go down
+                if (gridPos.x > -7)//checks to see if the x value of the player is greater than the fartherest value the player can go down
                 {
                     transform.position = new Vector3(forward.position.x - 0.5f, forward.position.y, 0);//moves the player position
                     forward.position = new Vector3(savePosF.x - 0.5f, savePosF.y - 0.25f, 0);//moves the front movePoint
@@ -73,7 +73,7 @@ public class movement : MonoBehaviour
             {
                 StartCoroutine(delay("W"));
                 Vector3Int gridPos = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, 0));//gets the grid position from the world and converts it to the tilemap grid position
-                if(gridPos.x < 7)//checks to see if the x value of the player is less than the highest value the player can go up
+                if(gridPos.x < 11)//checks to see if the x value of the player is less than the highest value the player can go up
                 {
                     transform.position = new Vector3(back.position.x + 0.5f, back.position.y, 0);//moves the player position
                     forward.position = new Vector3(savePosF.x + 0.5f, savePosF.y + 0.25f, 0);//moves the front movePoint
@@ -121,21 +121,4 @@ public class movement : MonoBehaviour
         arrows[3].GetComponent<Renderer>().enabled = false;
         gridMovement();
     }
-    /*public void initSave()
-    {
-        saveSystem.SavePlayer(this);
-    }
-    public void load()
-    {
-        try
-        {
-            save data = saveSystem.loadPlayer();
-            Vector3 pos;
-            pos.x = data.playerPosititon[0];
-            pos.y = data.playerPosititon[1];
-            pos.z = data.playerPosititon[2];
-            Debug.Log(pos);
-            transform.position = pos;
-        }catch{}
-    }*/
 }

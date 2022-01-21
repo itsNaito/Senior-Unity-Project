@@ -15,7 +15,9 @@ public class saveSystem : MonoBehaviour
     public GameObject zombies;
     public Transform playerPos;
 
-    public GameObject checkpoints;
+    public GameObject camera;
+
+    //public GameObject checkpoints;
 
     private string combatEnd;
     void Awake()
@@ -30,11 +32,21 @@ public class saveSystem : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void LateUpdate()
+    void Update()
     {
+        if(SceneManager.GetActiveScene().name == "Combat")
+        {
+            player.SetActive(false);
+            zombies.SetActive(false);
+            chests.SetActive(false);
+            camera.SetActive(false);
+        }
         if(SceneManager.GetActiveScene().name != "Combat")
         {
-            playerPos = player.GetComponent<Transform>();
+            player.SetActive(true);
+            zombies.SetActive(true);
+            chests.SetActive(true);
+            camera.SetActive(true);
         }
     }
     public void updateObjects()
@@ -42,11 +54,13 @@ public class saveSystem : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         zombies = GameObject.FindGameObjectWithTag("zombie");
         chests = GameObject.FindGameObjectWithTag("chest");
-        checkpoints = GameObject.FindGameObjectWithTag("checkpoint");
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        //checkpoints = GameObject.FindGameObjectWithTag("checkpoint");
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(zombies);
         DontDestroyOnLoad(chests);
-        DontDestroyOnLoad(checkpoints);
+        DontDestroyOnLoad(camera);
+        //DontDestroyOnLoad(checkpoints);
     }
     public void battleWinner(battleState battleState)
     {

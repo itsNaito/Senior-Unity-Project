@@ -12,6 +12,7 @@ TagManager:
   - chest
   - saveSys
   - checkpoint
+  - Canvas
   layers:
   - Default
   - TransparentFX

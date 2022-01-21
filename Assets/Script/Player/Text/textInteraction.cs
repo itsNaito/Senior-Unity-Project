@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 public class textInteraction : MonoBehaviour
 {
     //set of variables
+    public GameObject canvas;
     public bool noInput = false;
-    public Canvas canvas;
+    //public Canvas canvas;
     // Update is called once per frame
     void Update()
     {
         if(SceneManager.GetActiveScene().name == "Tutorial")
         {
+            canvas = GameObject.Find("Canvas");
             Canvas render = canvas.GetComponent<Canvas>();//gets the canvas component off the canvas
             if (render.enabled == true)//checks to see if the canvas gameObject is being rendered
             {

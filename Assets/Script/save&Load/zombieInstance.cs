@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class instance : MonoBehaviour
+public class zombieInstance : MonoBehaviour
 {
-    private static GameObject newInstance;
+    private static GameObject newZombieInstance;
     void Awake()
     {
-        if(newInstance == null)
+        if(newZombieInstance == null)
         {
-            newInstance = gameObject;
+            newZombieInstance = gameObject;
         }
         else
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 public class saveUpdate : MonoBehaviour 
 {
     public GameObject saveSys;
-    void Start()
+    void Awake()
     {
         saveSys.GetComponent<saveSystem>().updateObjects();
     }
