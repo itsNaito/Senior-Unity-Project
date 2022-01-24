@@ -34,7 +34,7 @@ public class saveSystem : MonoBehaviour
     }
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Combat")
+        /*if(SceneManager.GetActiveScene().name == "Combat")
         {
             player.SetActive(false);
             zombies.SetActive(false);
@@ -47,8 +47,23 @@ public class saveSystem : MonoBehaviour
             zombies.SetActive(true);
             chests.SetActive(true);
             camera.SetActive(true);
-        }
+        }*/
     }
+    public void enterCombat()
+    {
+        player.SetActive(false);
+        zombies.SetActive(false);
+        chests.SetActive(false);
+        camera.SetActive(false);
+    }
+    public void exitCombat()
+    {
+        player.SetActive(true);
+        zombies.SetActive(true);
+        chests.SetActive(true);
+        camera.SetActive(true);
+    }
+
     public void updateObjects()
     {
         player = GameObject.FindWithTag("Player");
