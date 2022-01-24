@@ -15,6 +15,7 @@ public class combatTrigger : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))//checks to see if the object is the Player
         {
             saveSys.GetComponent<saveSystem>().zombie = gameObject;
+            saveSys.GetComponent<saveSystem>().enterCombat();
             SceneManager.LoadScene("Combat");//loads the combat scene
         }
     }

@@ -106,6 +106,7 @@ public class battleStates : MonoBehaviour
             saveSystem.GetComponent<saveSystem>().battleWinner(battleState.lost);
         }
         yield return new WaitForSeconds(1f);
+        saveSystem.GetComponent<saveSystem>().exitCombat();
         SceneManager.LoadScene("Tutorial");
     }
     void playerTurn()
