@@ -13,6 +13,7 @@ TagManager:
   - saveSys
   - checkpoint
   - Canvas
+  - inventory
   layers:
   - Default
   - TransparentFX

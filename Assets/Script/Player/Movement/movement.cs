@@ -14,6 +14,7 @@ public class movement : MonoBehaviour
     public Transform forward;
     public Transform back;
     public GameObject map;
+    public bool interaction;
     public List<GameObject> arrows = new List<GameObject>();
     void Awake()
     {
@@ -34,12 +35,11 @@ public class movement : MonoBehaviour
     }
     void gridMovement()//the movement function that houses all the data used for the movement of the player object
     {
-        textInteraction interaction = gameObject.GetComponent<textInteraction>();//grabs the textInteraction script off the player gameObject
         Vector3 savePosF = new Vector3(forward.position.x, forward.position.y, 0);//stores the position of the front movePoint
         Vector3 savePosb = new Vector3(back.position.x, back.position.y, 0);//stores the position of the back movePoint
         map = GameObject.Find("map");
         Tilemap tilemap = map.GetComponent<Tilemap>();
-        if (interaction.noInput == false)//checks to see that dialogue isn't active
+        if (interaction == false)//checks to see that dialogue isn't active
         {
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))//checks for input from D or right arrow
             {
@@ -53,7 +53,7 @@ public class movement : MonoBehaviour
                 }
             }
         }
-        if(interaction.noInput == false)//checks to see that dialogue isn't active
+        if(interaction == false)//checks to see that dialogue isn't active
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))//checks for input from D or down arrow
             {
@@ -67,7 +67,7 @@ public class movement : MonoBehaviour
                 }
             }
         }
-        if (interaction.noInput == false)//checks to see that dialogue isn't active
+        if (interaction == false)//checks to see that dialogue isn't active
         {
             if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))//checks for input from the W or up arrow
             {
@@ -81,7 +81,7 @@ public class movement : MonoBehaviour
                 }
             }
         }
-        if (interaction.noInput == false)//checks to see that dialogue isn't active
+        if (interaction == false)//checks to see that dialogue isn't active
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))//checks for input from the A or left arrow
             {

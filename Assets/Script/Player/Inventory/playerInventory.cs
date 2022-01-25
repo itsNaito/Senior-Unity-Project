@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class playerInventory : MonoBehaviour
 {
     private bool openinv;
@@ -22,17 +23,24 @@ public class playerInventory : MonoBehaviour
     void openInventory()
     {
         Canvas render = invCanvas.GetComponent<Canvas>();
-        if(Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.I) && SceneManager.GetActiveScene().name != "Combat")
         {
             if(render.enabled == true)
             {
                 render.enabled = false;
+                gameObject.GetComponent<movement>().interaction = false;
             }
             else if(render.enabled == false)
             {
                 render.enabled = true;
+                gameObject.GetComponent<movement>().interaction = true;
             }
         }
+    }
+    public void enterCombat()
+    {
+        Canvas render = invCanvas.GetComponent<Canvas>();
+        render.enabled = false;
     }
 }
 
